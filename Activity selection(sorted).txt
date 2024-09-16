@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void fun(int n, int s[], int f[]) {
+    cout << "Selected activities: " << endl;
+    int i = 0;
+    cout << i << ' ';  // First activity is always selected
+    
+    for (int j = 1; j < n; j++) {
+        // Select the activity if its start time is greater or equal to the finish time of the last selected activity
+        if (s[j] >= f[i]) {
+            cout << j << ' ';  // Print the selected activity's index
+            i = j;  // Update i to the current activity
+        }
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int a[n], b[n];
+    
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];  // Input start times
+    }
+    
+    for (int i = 0; i < n; i++) {
+        cin >> b[i];  // Input finish times
+    }
+    
+    fun(n, a, b);
+    return 0;
+}/* 6
+1 3 0 5 8 5
+2 4 6 7 9 9*/
+

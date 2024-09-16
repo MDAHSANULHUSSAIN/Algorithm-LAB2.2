@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// Structure to store an activity's start and finish time
+struct Activity {
+    int start, finish;
+};
+
+// Comparison function to sort activities by their finish times
+bool compare(Activity a1, Activity a2) {
+    return a1.finish < a2.finish;
+}
+
+void fun(int n, Activity activities[]) {
+    // Sort activities based on their finish times
+    sort(activities, activities + n, compare);
+    
+    cout << "Selected activities: " << endl;
+    
+    int i = 0;
+    cout << i << ' ';  // First activity is always selected
+    
+    for (int j = 1; j < n; j++) {
+        // Select the activity if its start time is greater or equal to the finish time of the last selected activity
+        if (activities[j].start >= activities[i].finish) {
+            cout << j << ' ';  // Print the selected activity's index
+            i = j;  // Update i to the current activity
+        }
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    
+    Activity activities[n];
+    
+    for (int i = 0; i < n; i++) {
+        cin >> activities[i].start;  // Input start times
+    }
+    
+    for (int i = 0; i < n; i++) {
+        cin >> activities[i].finish;  // Input finish times
+    }
+    
+    fun(n, activities);
+    
+    return 0;
+}
