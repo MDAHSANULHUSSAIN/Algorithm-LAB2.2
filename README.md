@@ -1,1 +1,1 @@
-# Algorithm--LAB-2.2
+ Algorithm LAB 2.2
